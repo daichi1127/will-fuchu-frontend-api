@@ -1,47 +1,26 @@
-import {
-  BrowserRouter,
-  Route,
-  Switch,
-  NavLink,
-  useParams,
-  useRouteMatch
-} from 'react-router-dom';
-import Home from './components/body/Home';
-import About from './components/body/About';
-import Contact from './components/body/Contact';
-import Articles from './components/body/Articles';
-import Article from './components/body/Article';
-// import Articles from './components/body/Articles';
+import React from 'react';
+import logo from './logo.svg';
+import './App.css';
 
 function App() {
   return (
-    <BrowserRouter>
-      <h1>Hello React Router</h1>
-      <ul>
-        <li>
-          <NavLink exact to="/">Home</NavLink>
-        </li>
-        <li>
-          <NavLink to="/about">About</NavLink>
-        </li>
-        <li>
-          <NavLink to="/contact">Contact</NavLink>
-        </li>
-        <li>
-          <NavLink to="/articles">Articles</NavLink>
-        </li>
-      </ul>
-      <Switch>
-        <Route exact path="/" component={Home}/>
-        <Route path="/about" component={About}/>
-        <Route path="/contact" component={Contact}/>
-        <Route exact path="/articles" component={Articles}/>
-        <Route path="/articles/:id" component={Article}/>
-        {/* <Route>
-          <NotFound />
-        </Route> */}
-      </Switch>
-    </BrowserRouter>
+    <div className="App">
+      <header className="App-header">
+        <img src={logo} className="App-logo" alt="logo" />
+        <p>
+          Edit <code>src/App.tsx</code> and save to reload.
+        </p>
+        <a
+          className="App-link"
+          href="https://reactjs.org"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Learn React
+        </a>
+      </header>
+    </div>
   );
 }
+
 export default App;
