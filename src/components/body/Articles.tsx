@@ -5,7 +5,8 @@ import {
   NavLink,
   useRouteMatch
 } from 'react-router-dom';
-
+import Grid from '@material-ui/core/Grid';
+import { Card, CardHeader, Avatar } from "@material-ui/core";
 
 function Articles() {
   const [articles, setArticles] = useState([]);
@@ -15,8 +16,7 @@ function Articles() {
     async function fetchData() {
       axios.get('http://localhost:8080/api/articles'
       ).then((results) => {
-        console.log(results)
-        console.log(results.data)
+        console.log(results.data);
         setArticles(results.data)
       })
     }
@@ -26,20 +26,18 @@ function Articles() {
   return (
     <div>
       <h2>Articles List</h2>
-      <ul>
+      <Grid container>
         {articles.map((article:any) => (
-          <li key={article.article_id}>
-            <NavLink
-              to={{
-                pathname: `${url}/${article.article_id}`,
-                state: article
-              }}
-            >
-              {article.content}
-            </NavLink>
-          </li>
+          <Grid item xs={4} key={article.article_id}>
+            <Card>
+              <CardHeader avatar={<Avatar>P</Avatar>} title="Profile" subheader="プロフィール"/>
+              <NavLink to={{pathname: `${url}/${article.article_id}`, state: article}}>
+                {article.content}
+              </NavLink>
+            </Card>
+          </Grid>
         ))}
-      </ul>
+      </Grid>
     </div>
   );
 }
