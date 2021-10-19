@@ -16,7 +16,6 @@ function Articles() {
     async function fetchData() {
       axios.get('http://localhost:8080/api/articles'
       ).then((results) => {
-        console.log(results.data);
         setArticles(results.data)
       })
     }
@@ -30,7 +29,6 @@ function Articles() {
         {articles.map((article:any) => (
           <Grid item xs={4} key={article.article_id}>
             <Card>
-              <CardHeader avatar={<Avatar>P</Avatar>} title="Profile" subheader="プロフィール"/>
               <NavLink to={{pathname: `${url}/${article.article_id}`, state: article}}>
                 {article.content}
               </NavLink>
