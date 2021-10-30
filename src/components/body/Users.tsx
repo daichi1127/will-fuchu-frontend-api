@@ -53,7 +53,7 @@ export const Users = () => {
           <Grid item xs={4} key={user.user_id}>
             <NavLink to={{pathname: `${url}/${user.user_id}`, state: user}}>
               <Card>
-                <CardHeader avatar={<Avatar src="/icon.jpeg" className={classes.sizeAvatar}/>} title={user.user_name} subheader="age"/>
+                <CardHeader avatar={<Avatar src={user.user_image} className={classes.sizeAvatar}/>} title={user.user_name} subheader="age"/>
                 <CardContent>
                   <List>
                     <ListItem>
