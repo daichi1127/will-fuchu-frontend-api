@@ -4,7 +4,7 @@ import { NavLink, useRouteMatch } from 'react-router-dom';
 import {
   makeStyles,
   Grid,
-  Card, 
+  Card,
   CardHeader,
   CardContent,
   Avatar,

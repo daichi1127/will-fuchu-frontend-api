@@ -5,12 +5,37 @@ import {
   NavLink,
   useRouteMatch
 } from 'react-router-dom';
-import Grid from '@material-ui/core/Grid';
-import { Card, CardHeader, Avatar } from "@material-ui/core";
+import {
+  makeStyles,
+  Grid,
+  Card,
+  CardHeader,
+  CardContent,
+  Avatar,
+  ButtonBase,
+  List,
+  ListItem,
+  ListItemIcon,
+  ListItemText,
+  Divider
+} from "@material-ui/core";
+import {
+  DateRange as DateRangeIcon,
+  Room as RoomIcon,
+  Business as BusinessIcon,
+} from "@material-ui/icons";
 
 function Articles() {
   const [articles, setArticles] = useState([]);
   const { path, url } = useRouteMatch();
+
+  const useStyles = makeStyles((theme) => ({
+    sizeAvatar: {
+      height: theme.spacing(10),
+      width: theme.spacing(10),
+    }
+  }));
+  const classes = useStyles();
 
   useEffect(() => {
     async function fetchData() {
@@ -24,15 +49,26 @@ function Articles() {
 
   return (
     <div>
-      <h2>Articles List</h2>
-      <Grid container>
+    <h2>Articles List</h2>
+      <Grid container spacing={3}>
         {articles.map((article:any) => (
-          <Grid item xs={4} key={article.article_id}>
-            <Card>
-              <NavLink to={{pathname: `${url}/${article.article_id}`, state: article}}>
-                {article.content}
-              </NavLink>
-            </Card>
+          <Grid item xs={4} key={article.user_id}>
+            <NavLink to={{pathname: `${url}/${article.article_id}`, state: article}}>
+              <Card>
+                <CardHeader title={article.content} />
+                <CardContent>
+                  <List>
+                    <ListItem>
+                      <ListItemIcon>
+                        <RoomIcon />
+                      </ListItemIcon>
+                      <ListItemText primary="tag" secondary="tag2" />
+                    </ListItem>
+                    <Divider variant="inset" component="li" />
+                  </List>
+                </CardContent>
+              </Card>
+            </NavLink>
           </Grid>
         ))}
       </Grid>
