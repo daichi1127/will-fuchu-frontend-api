@@ -37,9 +37,11 @@ export const Users = () => {
 
   useEffect(() => {
     async function fetchData() {
-      axios.get('http://localhost:8080/api/users'
+      axios.get('http://localhost:3000/api/v1/users'
       ).then((results) => {
-        setUsers(results.data)
+        console.log(results);
+        console.log(results.data);
+        setUsers(results.data);
       })
     }
     fetchData();
